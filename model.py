@@ -29,8 +29,8 @@ def get_json(endpoint: str, params: Optional[Dict[str, Any]]) -> Optional[Union[
 
 class RealPriceModel:
     def __init__(self):
-        btc_list = get_json("fapi/v1/klines", {"symbol": "BTCUSDT", "limit": 1500, "interval": "1m"})
-        eth_list = get_json("fapi/v1/klines", {"symbol": "ETHUSDT", "limit": 1500, "interval": "1m"})
+        btc_list = get_json("fapi/v1/klines", {"symbol": settings.primary_pair, "limit": 1500, "interval": "1m"})
+        eth_list = get_json("fapi/v1/klines", {"symbol": settings.secondary_pair, "limit": 1500, "interval": "1m"})
         btc_list_close = [float(e[4]) for e in btc_list]
         eth_list_close = [float(e[4]) for e in eth_list]
 
